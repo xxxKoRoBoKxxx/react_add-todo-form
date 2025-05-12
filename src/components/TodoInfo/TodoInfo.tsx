@@ -5,7 +5,7 @@ import { UserInfo } from '../UserInfo';
 
 type Props = {
   todo: Todo;
-  user: User;
+  user: User | null;
 };
 
 export const TodoInfo = ({ todo, user }: Props) => {
