@@ -100,8 +100,9 @@ export const App = () => {
         </div>
 
         <div className="field">
-          <label htmlFor="titleInput">Choose a user</label>
+          <label htmlFor="userSelect">Choose a user</label>
           <select
+            id="userSelect"
             data-cy="userSelect"
             value={choose}
             onChange={handleChooseChange}
