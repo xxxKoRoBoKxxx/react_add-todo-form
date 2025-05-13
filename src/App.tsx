@@ -13,7 +13,7 @@ export const App = () => {
   const [title, setTitle] = useState('');
   const [hasTitleError, setHasTitleError] = useState(false);
 
-  const [choose, setChoose] = useState('0');
+  const [choose, setChoose] = useState(0);
   const [hasChooseError, setHasChooseError] = useState(false);
 
   function getUserById(userId: number): User | null {
@@ -33,7 +33,7 @@ export const App = () => {
   };
 
   const handleChooseChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setChoose(event.target.value);
+    setChoose(+event.target.value);
     setHasChooseError(false);
   };
 
@@ -76,6 +76,9 @@ export const App = () => {
         user: getUserById(+choose),
       },
     ]);
+
+    setTitle('');
+    setChoose(0);
   };
 
   return (
@@ -100,15 +103,13 @@ export const App = () => {
           <label htmlFor="titleInput">Choose a user</label>
           <select
             data-cy="userSelect"
-            defaultValue={0}
+            value={choose}
             onChange={handleChooseChange}
           >
-            <option value="0" disabled>
-              Choose a user
-            </option>
+            <option value="0">Choose a user</option>
             {usersFromServer.map(user => (
               <option value={user.id} key={user.id}>
-                {user.username}
+                {user.name}
               </option>
             ))}
           </select>
